@@ -1,0 +1,6 @@
+main form#clientes{
+    display: flex;
+    justify-content: right;
+    width: 100vw;
+
+}

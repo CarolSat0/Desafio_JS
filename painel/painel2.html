@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="painel2.css">
+    <script src="painel.js"></script>
+    <title>Painel</title>
+</head>
+<body>
+    <header>
+        <nav class="flex">
+            <ul class="caixa">
+                <li>
+                    <button id="btnClientes" class="clientes btn"><span class="material-symbols-outlined">
+                        person_add
+                        </span>Clientes</button>
+                </li>
+                <li>
+                    <button class="produtos btn"><span class="material-symbols-outlined">
+                        redeem
+                        </span>Produtos</button>
+                </li>
+                <li>
+                    <button class="pedidos btn"><span class="material-symbols-outlined">
+                        shopping_cart
+                        </span>Pedidos</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form id="clientes" class="flex" action="">
+            <div class="flex btnSair">
+                <h2>Clientes</h2>
+                <button id="fechar">X</button>
+            </div>
+            <label for="codigo">Código</label>
+            <input id="codigo" type="text">
+            <label for="nome">Nome</label>
+            <input id="nome" type="text">
+            <label for="dataCadastro">Data de Cadastro</label>
+            <input type="date" name="" id="dataCadastro">
+            <div class="flex botoes">
+                <div class="volProx">
+                    <button id="voltar" class="btn"><</button>
+                    <button id="proximo" class="btn">></button>
+                </div>
+                <div class="NovoSalvar">
+                    <button id="Novo" class="btn">Novo</button>
+                    <button id="Salvar" class="btn">Salvar</button>
+                </div>
+            </div>
+        </form>
+        <form id="Produtos" class="flex" action="">
+            <div class="flex btnSair">
+                <h2>Produtos</h2>
+                <button class="fechar">X</button>
+            </div>
+            <label for="codigo">Código</label>
+            <input id="codigoProduto" type="text">
+            <label for="descricao">Descrição</label>
+            <input id="codigo" type="text">
+            <label for="preco">Preço</label>
+            <input id="preco" type="number">
+            <label for="Quantidade">Quantidade</label>
+            <input type="number" name="quantidade" id="quantidade">
+            <div class="flex botoes">
+                <div class="volProx">
+                    <button id="voltar" class="btn"><</button>
+                    <button id="proximo" class="btn">></button>
+                </div>
+                <div class="NovoSalvar">
+                    <button id="Novo" class="btn">Novo</button>
+                    <button id="Salvar" class="btn">Salvar</button>
+                </div>
+            </div>
+        </form>
+        <form id="pedidos" class="flex" action="">
+            <div class="flex btnSair">
+                <h2>Pedidos</h2>
+                <button class="fechar">X</button>
+            </div>
+            <label for="codigo do cliente">Código do cliente</label>
+            <input id="codigoCliente" type="text">
+            <label for="cliente">Cliente</label>
+            <input id="cliente" type="text">
+            <div id="precoPedido">
+                <h3>Preço</h3>
+                <input id="IdProduto" type="number">
+                <input id="descricao" type="text">
+                <input id="valor" type="number">
+                <input type="number" name="quantidade" id="quantidadePedido">
+                <button id="pedido">Adicionar pedido</button>
+            </div>
+            <div id="ItensPedido">
+                <h3>Itens do Pedido</h3>
+                <label for="Item">Item</label>
+                <label for="Descrição">Descrição</label>
+                <label for="Preco">Preço</label>
+                <label for="Qtd">Qtd</label>
+                <label for="SubTotal">Sub Total</label>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

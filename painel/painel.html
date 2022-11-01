@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="painel.css">
+    <link rel="stylesheet" href="../clientes/clientes.css">
     <script src="painel.js"></script>
     <title>Painel</title>
 </head>
@@ -17,7 +18,7 @@
         <nav class="flex">
             <ul class="caixa">
                 <li>
-                    <a class="menu" href="#cadastro_de_clientes"><span class="material-symbols-outlined">
+                    <a class="menu clientes"><span class="material-symbols-outlined">
                         group_add</span>Clientes</a>
                 </li>
                 <li>
@@ -31,7 +32,15 @@
             </ul>
         </nav>
     </header>
-    <main></main>
-    <footer></footer>
+    <main>
+        <form id="clientes" class="flex" action="">
+            <label for="codigo">Código</label>
+            <label for="nome">Nome</label>
+            <label for="dataCadastro">Data de Cadastro</label>
+        </form>
+    </main>
+    <footer>
+
+    </footer>
 </body>
 </html>

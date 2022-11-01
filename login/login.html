@@ -11,13 +11,14 @@
 <body>
     <header></header>
     <main>
-        <form id="formulario" name="formulario" method="post" class="flex form">
+        <form id="formulario" name="formulario" method="post" class="flex form" action="../painel/painel.html">
             <div id="login" class="flex login">
-                <label for="email">E-mail</label>
+                <label for="email" class="labels">E-mail</label>
                 <input type="email" value="" name="email" id="email">
-                <label for="senha">Senha</label>
+                <label for="senha" class="labels">Senha</label>
                 <input type="password" name="senha" id="senha">
-                <input type="button" value="Entrar" name="botao" id="botao">
+                <!-- <input type="button" value="Entrar" name="botao" id="botao"> -->
+                <button class="botao">Entrar</button>
             </div>
         </form>
     </main>

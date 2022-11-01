@@ -1,0 +1,79 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.flex{
+    display: flex;
+}
+body{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+header{
+    width: 20%;
+    height: 100%;
+    border-right: 1px solid #BDBDBD;
+}
+nav{
+    width: 100%;
+}
+ul.caixa{
+    width: 100%;
+    list-style: none;
+}
+button.btn{
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+button.btn:hover{
+    background-color: aquamarine;
+    color: #fff;
+}
+main{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div.btnSair{
+    justify-content: space-between;
+}
+button.fechar{
+    background-color: transparent;
+    border: transparent;
+    color: #F44336;
+    cursor: pointer;
+}
+main form{
+    flex-direction: column;
+    width: 40%;
+    margin: 0 auto;
+    border: 1px solid #000000;
+    padding: 5px;
+}
+div.botoes{
+    justify-content: space-between;
+}
+h3{
+    margin-top: 15px;
+    border-top: 1px solid #000000;
+    color: #304FFE;
+}
+input#IdProduto{
+    width: 10%;
+}
+input#descricao{
+    width: 40%;
+}
+input#valor, input#quantidadePedido{
+    width: 10%;
+}
