@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="painel2.css">
-    <script src="painel.js"></script>
     <title>Painel</title>
 </head>
 <body>
@@ -21,12 +20,12 @@
                         </span>Clientes</button>
                 </li>
                 <li>
-                    <button class="produtos btn"><span class="material-symbols-outlined">
+                    <button id="btnProdutos" class="produtos btn"><span class="material-symbols-outlined">
                         redeem
                         </span>Produtos</button>
                 </li>
                 <li>
-                    <button class="pedidos btn"><span class="material-symbols-outlined">
+                    <button id="btnPedidos" class="pedidos btn"><span class="material-symbols-outlined">
                         shopping_cart
                         </span>Pedidos</button>
                 </li>
@@ -34,32 +33,32 @@
         </nav>
     </header>
     <main>
-        <form id="clientes" class="flex" action="">
+        <form id="clientes" class="flex form" style="display: none;" action="">
             <div class="flex btnSair">
                 <h2>Clientes</h2>
-                <button id="fechar">X</button>
+                <button class="fechar btn" type="button">X</button>
             </div>
             <label for="codigo">Código</label>
             <input id="codigo" type="text">
             <label for="nome">Nome</label>
             <input id="nome" type="text">
             <label for="dataCadastro">Data de Cadastro</label>
-            <input type="date" name="" id="dataCadastro">
+            <input type="text" name="" id="dataCadastro">
             <div class="flex botoes">
-                <div class="volProx">
-                    <button id="voltar" class="btn"><</button>
-                    <button id="proximo" class="btn">></button>
+                <div id="volProx">
+                    <button class="voltar btnVP" type="button"><</button>
+                    <button class="proximo btnVP" type="button">></button>
                 </div>
                 <div class="NovoSalvar">
-                    <button id="Novo" class="btn">Novo</button>
-                    <button id="Salvar" class="btn">Salvar</button>
+                    <button class="novo btnNS" type="button">Novo</button>
+                    <button class="salvar btnNS" type="button">Salvar</button>
                 </div>
             </div>
         </form>
-        <form id="Produtos" class="flex" action="">
+        <form id="Produtos" class="flex form" style="display: none;" action="">
             <div class="flex btnSair">
                 <h2>Produtos</h2>
-                <button class="fechar">X</button>
+                <button class="fechar btn" type="button">X</button>
             </div>
             <label for="codigo">Código</label>
             <input id="codigoProduto" type="text">
@@ -71,19 +70,20 @@
             <input type="number" name="quantidade" id="quantidade">
             <div class="flex botoes">
                 <div class="volProx">
-                    <button id="voltar" class="btn"><</button>
-                    <button id="proximo" class="btn">></button>
+                    <button class="voltar btnVP" type="button"><</button>
+                    <button class="proximo btnVP" type="button">></button>
                 </div>
                 <div class="NovoSalvar">
-                    <button id="Novo" class="btn">Novo</button>
-                    <button id="Salvar" class="btn">Salvar</button>
+                    <button class="novo btnNS" type="button">Novo</button>
+                    <button class="salvar btnNS" type="button">Salvar</button>
                 </div>
             </div>
-        </form>
-        <form id="pedidos" class="flex" action="">
+        </form> 
+        <!-- pedidos -->
+        <form id="pedidos" class="flex form" style="display: none;" action="">
             <div class="flex btnSair">
                 <h2>Pedidos</h2>
-                <button class="fechar">X</button>
+                <button class="fechar btn" type="button">X</button>
             </div>
             <label for="codigo do cliente">Código do cliente</label>
             <input id="codigoCliente" type="text">
@@ -95,7 +95,7 @@
                 <input id="descricao" type="text">
                 <input id="valor" type="number">
                 <input type="number" name="quantidade" id="quantidadePedido">
-                <button id="pedido">Adicionar pedido</button>
+                <button id="pedido" type="button">Adicionar pedido</button>
             </div>
             <div id="ItensPedido">
                 <h3>Itens do Pedido</h3>
@@ -107,5 +107,6 @@
             </div>
         </form>
     </main>
+    <script src="../painel/painel.js" type="module"></script>
 </body>
 </html>
