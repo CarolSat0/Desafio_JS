@@ -44,8 +44,40 @@ function formSalvarProdutos(){
     }
     produtos.push(novoProdutos);
 }
-function pesquisaCodigo(codigo){
+function lerDados(){
+    let produtos = {}
+    produtos.codigoP = document.getElementById('IdProduto').value;
+    produtos.descricao = document.getElementById('descricao').value;
+    produtos.valor = document.getElementById('valor').value;
+    produtos.qntd = document.getElementById('quantidadePedido').value;
+    return produtos;
+}
+function listaTabela(produto){
+    let tbody = document.getElementById("tbody");
+    let tabela = document.querySelector("#tabela"); 
+    let produto_input = document.getElementById("IdProduto");
 
+    let tr = tbody.insertRow(tbody.parentElement.rows.length-1);
+    let totalValor = document.getElementById('total');
+
+    let td_id = tr.insertCell(0);
+    let td_descricao = tr.insertCell(1);
+    let td_valor = tr.insertCell(2);
+    let td_quantidade = tr.insertCell(3);
+    let td_SubTotal = tr.insertCell(4);
+
+    for(let i of tabela.rows){
+        if(produto_input.value == i.cells[0].textContent){
+            alert('Esse produto já foi adicionado');
+            return; // serve para nao continuar
+        }
+    }
+    td_id.textContent = produto.codigoP;
+    td_descricao.textContent = produto.descricao;
+    td_valor.textContent = produto.valor;
+    td_quantidade.textContent = produto.qntd;
+    td_SubTotal.textContent = (Number(quantidadePedido.value)* Number(valor.value)).toFixed(2); // foi utilizado o id do input
+    totalValor.textContent = (Number(total.textContent) + Number(td_SubTotal.textContent)).toFixed(2);
 }
 
 for(let x of btn){
@@ -109,8 +141,8 @@ for(let y of btnVP){
 }
 
 let btnNS = document.querySelectorAll(".btnNS");
-
-for(let z of btnNS){
+//salvar novos clientes/ produtos
+for(let z of btnNS){ 
     z.addEventListener('click', (evento) =>{
         let btnClicado = evento.target;
         console.log(btnClicado.form);
@@ -120,6 +152,7 @@ for(let z of btnNS){
                 formNovoCliente(Number(codigo+1));
             }else if(btnClicado.classList.contains("salvar")){
                 formSalvarCliente();
+                alert("Novo cliente cadastrado com sucesso!");
             }
         }else if(btnClicado.form.id == "Produtos"){
             if(btnClicado.classList.contains("novo")){
@@ -127,15 +160,41 @@ for(let z of btnNS){
                 formNovoProduto(Number(codigo+1));
             }else if(btnClicado.classList.contains("salvar")){
                 formSalvarProdutos();
+                alert("Novo produto cadastrado com sucesso!");
             }
         }
     })
 }
+//recebendo infor do input codigo cliente
+let IdCliente = document.getElementById('codigoCliente'); 
 
-let IdCliente = document.querySelector("#codigoCliente"); //recebendo infor do input codigo cliente
-let ListaClientes = document.querySelectorAll(clientes); // lista clientes
+//pesquisa cliente
+IdCliente.addEventListener('focusout', function(){ 
+    let codigoV = IdCliente.value -1;
+    
+    if(codigoV < 0){
+        codigoV = 0;
+    }
 
-for(let w of ListaClientes){
-    let pesquisa = clientes.indexOf(IdCliente);
-    console.log(pesquisa);
-}
+    document.getElementById('cliente').value = clientes[codigoV]['nomeCliente'];
+})
+
+let codProduto = document.getElementById('IdProduto');
+
+// pesquisa itens
+codProduto.addEventListener('focusout', function(){ 
+    let codigo = codProduto.value -1;
+    if(codigo < 0){
+        codigo = 0;
+    }
+
+    document.getElementById('descricao').value = produtos[codigo]['descProduto'];
+    document.getElementById('valor').value = produtos[codigo]['precoProduto'];
+})
+
+let btnAdd = document.querySelector(".btnAdd");
+ 
+btnAdd.addEventListener('click', function(){
+    let produto = lerDados();
+    listaTabela(produto);
+})

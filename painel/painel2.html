@@ -33,6 +33,7 @@
         </nav>
     </header>
     <main>
+        <!-- Clientes -->
         <form id="clientes" class="flex form" style="display: none;" action="">
             <div class="flex btnSair">
                 <h2>Clientes</h2>
@@ -55,6 +56,7 @@
                 </div>
             </div>
         </form>
+        <!-- Produtos -->
         <form id="Produtos" class="flex form" style="display: none;" action="">
             <div class="flex btnSair">
                 <h2>Produtos</h2>
@@ -88,22 +90,36 @@
             <label for="codigo do cliente">Código do cliente</label>
             <input id="codigoCliente" type="text">
             <label for="cliente">Cliente</label>
-            <input id="cliente" type="text">
-            <div id="precoPedido">
+            <input id="cliente" disabled type="text">
+            <div class="precoP" id="precoPedido">
                 <h3>Preço</h3>
                 <input id="IdProduto" type="number">
-                <input id="descricao" type="text">
-                <input id="valor" type="number">
+                <input id="descricao" disabled type="text">
+                <input id="valor" disabled type="number">
                 <input type="number" name="quantidade" id="quantidadePedido">
-                <button id="pedido" type="button">Adicionar pedido</button>
+                <button class="btnAdd" type="button">Adicionar pedido</button>
             </div>
-            <div id="ItensPedido">
                 <h3>Itens do Pedido</h3>
-                <label for="Item">Item</label>
-                <label for="Descrição">Descrição</label>
-                <label for="Preco">Preço</label>
-                <label for="Qtd">Qtd</label>
-                <label for="SubTotal">Sub Total</label>
+            <!-- tabela pedidos -->
+            <div class="ConteudoPedido">
+                <table id="tabela">
+                    <tbody id="tbody" class="conteudo">
+                        <tr>
+                            <td>Item</td>
+                            <td>Descrição</td>
+                            <td>Preço</td>
+                            <td>Qtd</td>
+                            <td>Sub Total</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Total</td>
+                            <td id="total"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </form>
     </main>
