@@ -1,8 +1,11 @@
 import { clientes } from "../painel/clientes.js";
 import {produtos} from "../painel/produtos.js";
-
+ 
 let btn = document.querySelectorAll(".btn");
-
+//recebendo infor do input codigo cliente
+let IdCliente = document.getElementById('codigoCliente');
+let codProduto = document.getElementById('IdProduto');
+ 
 function formCliente(codigo){
     document.forms[0][1].value = clientes[codigo].codCliente;
     document.forms[0][2].value = clientes[codigo].nomeCliente;
@@ -27,7 +30,7 @@ function formNovoProduto(codigo){
     document.forms[1][4].value = "";
 }
 function formSalvarCliente(){
-
+ 
     let novoCliente = {
         "codCliente": document.forms[0][1].value,
         "nomeCliente": document.forms[0][2].value,
@@ -54,18 +57,18 @@ function lerDados(){
 }
 function listaTabela(produto){
     let tbody = document.getElementById("tbody");
-    let tabela = document.querySelector("#tabela"); 
+    let tabela = document.querySelector("#tabela");
     let produto_input = document.getElementById("IdProduto");
-
+ 
     let tr = tbody.insertRow(tbody.parentElement.rows.length-1);
     let totalValor = document.getElementById('total');
-
+ 
     let td_id = tr.insertCell(0);
     let td_descricao = tr.insertCell(1);
     let td_valor = tr.insertCell(2);
     let td_quantidade = tr.insertCell(3);
     let td_SubTotal = tr.insertCell(4);
-
+ 
     for(let i of tabela.rows){
         if(produto_input.value == i.cells[0].textContent){
             alert('Esse produto já foi adicionado');
@@ -79,7 +82,8 @@ function listaTabela(produto){
     td_SubTotal.textContent = (Number(quantidadePedido.value)* Number(valor.value)).toFixed(2); // foi utilizado o id do input
     totalValor.textContent = (Number(total.textContent) + Number(td_SubTotal.textContent)).toFixed(2);
 }
-
+ 
+//apresentar e fechar aba clientes-produtos-pedidos
 for(let x of btn){
 x.addEventListener('click', (evento)=>{
     let btnClicado = evento.target;
@@ -115,86 +119,121 @@ x.addEventListener('click', (evento)=>{
     }
 });
 }
-
+ 
 let btnVP = document.querySelectorAll(".btnVP");
-
+//Botão avançar-voltar
 for(let y of btnVP){
     y.addEventListener('click', (evento) =>{
         let btnClicado = evento.target;
-        console.log(btnClicado.form);
         if(btnClicado.form.id == "clientes"){
             let codigo = document.forms[0][1].value;
+            let Cliente = clientes;
+            console.log(codigo)
             if(btnClicado.classList.contains("proximo")){
-                formCliente(codigo);
+                if(codigo == Cliente.length){
+                    alert("Chegou ao final da lista!");
+                }else{
+                    formCliente(codigo);
+                }
             }else if(btnClicado.classList.contains("voltar")){
-                formCliente(Number(codigo-2));
+                if(codigo == 1){
+                    alert("Chegou ao inicio da lista!");
+                }else{
+                    formCliente(Number(codigo-2));
+                }
             }
         }else if(btnClicado.form.id == "Produtos"){
             let codigo = document.forms[1][1].value;
+            let prod = produtos;
             if(btnClicado.classList.contains("proximo")){
-                formProdutos(codigo);
+                if(codigo == prod.length){
+                    alert("Chegou ao final da lista!");
+                }else{
+                    formProdutos(codigo);
+                }
             }else if(btnClicado.classList.contains("voltar")){
-                formProdutos(Number(codigo-2));
+                if(codigo == 1){
+                    alert("Chegou ao inicio da lista!");
+                }else{
+                    formProdutos(Number(codigo-2));
+                }
             }
         }
     })
 }
-
+ 
 let btnNS = document.querySelectorAll(".btnNS");
 //salvar novos clientes/ produtos
-for(let z of btnNS){ 
+for(let z of btnNS){
     z.addEventListener('click', (evento) =>{
         let btnClicado = evento.target;
+        let nome = document.getElementById("nome");
         console.log(btnClicado.form);
         if(btnClicado.form.id == "clientes"){
             if(btnClicado.classList.contains("novo")){
                 let codigo = clientes.length;
                 formNovoCliente(Number(codigo+1));
             }else if(btnClicado.classList.contains("salvar")){
-                formSalvarCliente();
-                alert("Novo cliente cadastrado com sucesso!");
+                if(nome.value.length != ""){
+                    formSalvarCliente();
+                    alert("Novo cliente cadastrado com sucesso!");
+                }else{
+                    alert("Preencha todos os campos!");
+                }
             }
         }else if(btnClicado.form.id == "Produtos"){
+            let des = document.getElementById("codigo");
+            let preco = document.getElementById("preco");
+            let qntd = document.getElementById("quantidade");
             if(btnClicado.classList.contains("novo")){
                 let codigo = produtos.length;
                 formNovoProduto(Number(codigo+1));
             }else if(btnClicado.classList.contains("salvar")){
-                formSalvarProdutos();
-                alert("Novo produto cadastrado com sucesso!");
+                if(des.value.length != "" || preco.value.length != "" || qntd.value.length != ""){
+                    formSalvarProdutos();
+                    alert("Novo produto cadastrado com sucesso!");
+                }else{
+                    alert("Preencha todos os campos!");
+                }
             }
         }
     })
 }
-//recebendo infor do input codigo cliente
-let IdCliente = document.getElementById('codigoCliente'); 
-
+ 
 //pesquisa cliente
-IdCliente.addEventListener('focusout', function(){ 
+IdCliente.addEventListener('focusout', function(){
     let codigoV = IdCliente.value -1;
-    
+   
     if(codigoV < 0){
         codigoV = 0;
     }
-
+ 
     document.getElementById('cliente').value = clientes[codigoV]['nomeCliente'];
 })
-
-let codProduto = document.getElementById('IdProduto');
-
+ 
 // pesquisa itens
-codProduto.addEventListener('focusout', function(){ 
+codProduto.addEventListener('focusout', function(){
     let codigo = codProduto.value -1;
     if(codigo < 0){
         codigo = 0;
     }
-
+ 
     document.getElementById('descricao').value = produtos[codigo]['descProduto'];
     document.getElementById('valor').value = produtos[codigo]['precoProduto'];
 })
-
+ 
 let btnAdd = document.querySelector(".btnAdd");
  
 btnAdd.addEventListener('click', function(){
     let produto = lerDados();
-    listaTabela(produto);
+    let codigo = produto['codigoP'];
+    console.log(codigo);
+    console.log(produtos[codigo-1].qtdEstoqueProd);
+    if(produto['qntd']<=produtos[codigo-1].qtdEstoqueProd){
+        listaTabela(produto);
+    }else{
+        alert("Quantidade indisponível no momento!");
+    }
 })
+ 
+
