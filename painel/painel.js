@@ -168,32 +168,44 @@ for(let z of btnNS){
     z.addEventListener('click', (evento) =>{
         let btnClicado = evento.target;
         let nome = document.getElementById("nome");
+        let cod = document.getElementById("codigo");
         console.log(btnClicado.form);
         if(btnClicado.form.id == "clientes"){
             if(btnClicado.classList.contains("novo")){
                 let codigo = clientes.length;
                 formNovoCliente(Number(codigo+1));
             }else if(btnClicado.classList.contains("salvar")){
-                if(nome.value.length != ""){
-                    formSalvarCliente();
-                    alert("Novo cliente cadastrado com sucesso!");
-                }else{
-                    alert("Preencha todos os campos!");
-                }
+                    if(clientes.length+1 == cod.value){
+                        if(nome.value.length != ""){
+                            formSalvarCliente();
+                            alert("Novo cliente cadastrado com sucesso!");
+                            formCliente(0);
+                        }else{
+                            alert("Preencha todos os campos!");
+                        }
+                    }else{
+                        alert("Crie um novo cliente!");
+                    }
             }
         }else if(btnClicado.form.id == "Produtos"){
             let des = document.getElementById("codigo");
             let preco = document.getElementById("preco");
             let qntd = document.getElementById("quantidade");
+            let codigoPosicao = document.getElementById("codigoProduto");
             if(btnClicado.classList.contains("novo")){
                 let codigo = produtos.length;
                 formNovoProduto(Number(codigo+1));
             }else if(btnClicado.classList.contains("salvar")){
-                if(des.value.length != "" || preco.value.length != "" || qntd.value.length != ""){
-                    formSalvarProdutos();
-                    alert("Novo produto cadastrado com sucesso!");
+                if(produtos.length+1 == codigoPosicao.value){
+                    if(des.value.length != "" || preco.value.length != "" || qntd.value.length != ""){
+                        formSalvarProdutos();
+                        alert("Novo produto cadastrado com sucesso!");
+                        formProdutos(0);
+                    }else{
+                        alert("Preencha todos os campos!");
+                    }
                 }else{
-                    alert("Preencha todos os campos!");
+                    alert("Crie um novo produto!");
                 }
             }
         }
@@ -235,5 +247,3 @@ btnAdd.addEventListener('click', function(){
         alert("Quantidade indisponível no momento!");
     }
 })
- 
-

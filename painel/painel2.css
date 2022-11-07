@@ -23,7 +23,7 @@ ul.caixa{
     width: 100%;
     list-style: none;
 }
-button.btn{
+button.btn, button.btnVP, button.btnNS{
     background-color: transparent;
     border-color: transparent;
     border-radius: 5px;
@@ -34,6 +34,14 @@ button.btn{
     margin-bottom: 10px;
 }
 button.btn:hover{
+    background-color: aquamarine;
+    color: #fff;
+}
+button.btnVP:hover{
+    background-color: aquamarine;
+    color: #fff;
+}
+button.btnNS:hover{
     background-color: aquamarine;
     color: #fff;
 }
@@ -55,10 +63,12 @@ button.fechar{
 }
 main form{
     flex-direction: column;
-    width: 40%;
+    width: 70%;
     margin: 0 auto;
     border: 1px solid #000000;
+    border-radius: 2%;
     padding: 5px;
+    box-shadow: 3px 3px 1px 0 #00000060;
 }
 div.botoes{
     justify-content: space-between;
